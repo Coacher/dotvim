@@ -1,0 +1,224 @@
+scriptencoding utf-8
+"
+" Plugin settings
+"
+" ddc
+" <Tab> selects the next candidate
+inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : <SID>map_complete()
+" <Esc> cancels the completion
+inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
+" <CR>  inserts the current candidate
+inoremap <expr> <CR>  pumvisible() ? "\<C-Y>" : "\<CR>"
+
+call ddc#custom#patch_global('ui', 'none')
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ '_': {
+    \   'maxItems': 10,
+    \   'minAutoCompleteLength': 3,
+    \   'keywordPattern': '\k+',
+    \   'matchers': ['matcher_head'],
+    \   'sorters': ['sorter_rank'],
+    \   'converters': ['converter_remove_overlap', 'converter_truncate_abbr'],
+    \ },
+\})
+
+" Local to the cursor: around
+" Local to the file: necosyntax, ctags / necovim, vim
+" Local to the buffers: buffer
+" Local to the project: file, vim-lsp
+call ddc#custom#patch_global('sources', [
+    \ 'vim-lsp', 'buffer', 'ctags', 'necosyntax', 'around', 'file'
+\])
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'around': {'mark': '[around]', 'maxItems': 6},
+\})
+" Search two screens above and below the cursor position.
+call ddc#custom#patch_global('sourceParams', {
+    \ 'around': {'maxSize': 120},
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'necosyntax': {'mark': '[syntax]'},
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'ctags': {
+    \   'mark': '[ctags]',
+    \   'matchers': ['matcher_fuzzy'],
+    \   'sorters': ['sorter_fuzzy'],
+    \ },
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'buffer': {'mark': '[buffer]', 'maxItems': 6},
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'file': {
+    \   'mark': '[file]',
+    \   'maxItems': 32,
+    \   'isVolatile': v:true,
+    \   'forceCompletionPattern': '\S\/\S*',
+    \ },
+\})
+call ddc#custom#patch_global('sourceParams', {
+    \ 'file': {
+    \   'mode': 'os',
+    \   'trailingSlash': v:true,
+    \   'followSymlinks': v:true,
+    \   'disableMenu': v:true,
+    \ },
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'vim-lsp': {
+    \   'mark': '[lsp]',
+    \   'matchers': ['matcher_fuzzy'],
+    \   'sorters': ['sorter_fuzzy'],
+    \ },
+\})
+
+call ddc#custom#patch_filetype('vim', {
+    \ 'sources': ['vim', 'buffer', 'necovim', 'around', 'file'],
+\})
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'necovim': {'mark': '[viml]'},
+\})
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'vim': {
+    \   'mark': '[vim]',
+    \   'isVolatile': v:true,
+    \   'matchers': ['matcher_fuzzy'],
+    \   'sorters': ['sorter_fuzzy'],
+    \ },
+\})
+
+call ddc#enable()
+
+" denite
+call denite#custom#option('_', {
+    \ 'highlight_matched_char': 'DiffText',
+    \ 'match_highlight': v:true,
+    \ 'smartcase': v:true,
+    \ 'source_names': 'short',
+    \ 'start_filter': v:true,
+\})
+
+call denite#custom#filter('matcher/clap', {
+    \ 'clap_path': expand('~/.vim/plugins/vim-clap'),
+\})
+
+call denite#custom#source('file/rec', {
+    \ 'matchers': ['matcher/hide_hidden_files', 'matcher/clap'],
+\})
+
+call denite#custom#var('file/rec', {
+    \ 'command': ['rg', '--color', 'never', '--files', '--unrestricted'],
+\})
+
+call denite#custom#source('grep', {
+    \ 'matchers': [],
+    \ 'sorters': [],
+    \ 'converters': [],
+\})
+
+call denite#custom#option('grep', {
+    \ 'match_highlight': v:false,
+\})
+
+call denite#custom#var('grep', {
+    \ 'command': ['rg'],
+    \ 'default_opts': ['--no-heading', '--smart-case', '--vimgrep'],
+    \ 'final_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'recursive_opts': [],
+    \ 'separator': ['--'],
+\})
+
+call denite#custom#option('bufexplorer', {
+    \ 'start_filter': v:false,
+\})
+
+" BufExplorer equivalent via denite
+nmap <silent> <F4> :Denite -buffer-name=bufexplorer -split=no buffer<CR>
+imap <silent> <F4> <C-\><C-N>:Denite -buffer-name=bufexplorer -split=no buffer<CR>
+
+" denite
+nmap <silent> <C-F> :DeniteProjectDir file/rec<CR>
+imap <silent> <C-F> <C-\><C-O>:DeniteProjectDir file/rec<CR>
+nmap <silent> <C-G> :DeniteProjectDir -buffer-name=grep grep:::!<CR>
+imap <silent> <C-G> <C-\><C-O>:DeniteProjectDir -buffer-name=grep grep:::!<CR>
+
+augroup denitesettings
+autocmd!
+autocmd FileType denite call s:denite_main_settings()
+autocmd FileType denite-filter call s:denite_filter_settings()
+autocmd FileType denite call s:denite_bufexplorer_settings()
+augroup END
+
+" SpellCheck
+augroup spellcheck
+autocmd!
+autocmd VimEnter * delcommand SpellCheck
+autocmd VimEnter * delcommand SpellLCheck
+autocmd VimEnter * command! -bar -bang -range=% -nargs=*
+    \ -complete=customlist,SpellCheckCompleteFunc Spell
+    \ call SpellCheck#quickfix#List(<line1>, <line2>, <bang>1, 1, <q-args>)
+augroup END
+
+
+" Helper functions {{{
+function! s:map_complete()
+    let l:col = col('.') - 1
+    if (l:col <= 0) || (getline('.')[l:col - 1] =~# '\s')
+        " If the cursor is at the beginning of a line or after a space,
+        " then insert <Tab>.
+        return "\<Tab>"
+    endif
+
+    " Otherwise begin the completion process.
+    return ddc#map#manual_complete({'ui': 'native'})
+endfunction
+
+function! s:denite_main_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+        \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> <ESC>
+        \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <F10>
+        \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> q
+        \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+        \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> D
+        \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> P
+        \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> S
+        \ denite#do_map('do_action', 'splitswitch')
+    nnoremap <silent><buffer><expr> V
+        \ denite#do_map('do_action', 'vsplitswitch')
+endfunction
+
+function! s:denite_filter_settings() abort
+    call deoplete#custom#buffer_option('auto_complete', v:false)
+
+    inoremap <silent><buffer><expr> <CR>
+        \ denite#do_map('do_action')
+    inoremap <silent><buffer> <ESC>
+        \ <Plug>(denite_filter_update)
+    inoremap <silent><buffer> <F10>
+        \ <Plug>(denite_filter_update)
+endfunction
+
+function! s:denite_bufexplorer_settings() abort
+    if @% ==# '[denite]-bufexplorer'
+        nnoremap <silent><buffer><expr> <F4>
+            \ denite#do_map('quit')
+    endif
+endfunction
+" }}}
+" vim:set foldenable foldmethod=marker:

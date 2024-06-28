@@ -1,0 +1,174 @@
+scriptencoding utf-8
+"
+" Plugin settings
+"
+" ale
+let g:ale_cache_executable_check_failures = 1
+let g:ale_hover_cursor = 0
+let g:ale_keep_list_window_open = 1
+let g:ale_set_balloons = 0
+let g:ale_sign_error = '✘›'
+let g:ale_sign_warning = '‼›'
+let g:ale_sign_info = '*›'
+let g:ale_sign_style_error = '✗›'
+let g:ale_sign_style_warning = '⁈›'
+let g:ale_virtualtext_cursor = 0
+highlight ALEErrorSign cterm=standout ctermfg=196 gui=standout guifg=Red
+highlight ALEWarningSign cterm=bold ctermfg=220 gui=bold guifg=Gold
+
+" DiffChar
+let g:DiffUnit = 'Word3'
+
+" echodoc
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'popup'
+
+" Gutentags
+let g:gutentags_cache_dir = '~/.vim/tags'
+let g:gutentags_project_root = ['pyvenv.cfg']
+
+" Indent Guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_color_change_percent = 13
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar']
+
+highlight IndentGuidesOdd  guibg=#3f3f3f ctermbg=237
+highlight IndentGuidesEven guibg=#585858 ctermbg=240
+
+augroup indentguidesupdate
+autocmd!
+autocmd OptionSet * call indent_guides#process_autocmds()
+augroup END
+
+" neco-syntax
+let g:necosyntax#max_syntax_lines = 500
+
+" NERDTree
+let g:NERDTreeNaturalSort = 1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeRespectWildIgnore = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '∼'
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapPreviewSplit = 'gs'
+let g:NERDTreeMapOpenVSplit = 'v'
+let g:NERDTreeMapPreviewVSplit = 'gv'
+
+" python-indent
+let g:python_indent_line_up_closing_bracket_with_last_line = 0
+let g:python_indent_extra_indent_in_multiline_if_condition = 0
+
+" SpellCheck
+let g:SpellCheck_DefineAuxiliaryCommands = 0
+
+" sql.vim (default)
+let g:omni_sql_no_default_maps = 1
+
+" Tagbar
+let g:tagbar_ctags_options = ['NONE']
+let g:tagbar_width = 45
+let g:tagbar_zoomwidth = 0
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 2
+let g:tagbar_show_baloon = 0
+let g:tagbar_show_visibility = 0
+let g:tagbar_iconchars = ['+', '∼']
+let g:tagbar_previewwin_pos = 'botright'
+let g:tagbar_silent = 1
+let g:tagbar_wrap = 1
+let g:tagbar_highlight_method = 'scoped-stl'
+let g:tagbar_map_togglefold = ['o', 'za', '<Space>']
+let g:tagbar_map_showproto = []
+
+" undotree
+let g:undotree_WindowLayout = 4
+let g:undotree_SplitWidth = 35
+let g:undotree_DiffpanelHeight = 13
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_DiffCommand = 'git diff --no-index --no-color --no-ext-diff'
+
+" vim-clap
+let g:clap_start_server_on_startup = 0
+
+" vim-lsp
+let g:lsp_completion_documentation_enabled = 0
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
+
+" vim-lsp-settings
+let g:lsp_settings_enable_suggestions = 0
+
+" vim-virtualenv
+let g:virtualenv#directory = '/home/coacher/Work/Repos'
+let g:virtualenv#enable_gutentags_support = 1
+
+" vim-yoink
+let g:yoinkSyncNumberedRegisters = 1
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkSavePersistently = 0
+
+" vimspector
+let g:vimspector_enable_auto_hover = 0
+let g:vimspector_bottombar_height = 20
+
+
+"
+" Plugin mappings
+"
+" ale
+nmap <silent> <F6> :ALEToggle<CR>
+imap <silent> <F6> <C-\><C-O>:ALEToggle<CR>
+
+" EasyAlign
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+" NERDTree
+nmap <silent> <F3> :NERDTreeToggle<CR>
+imap <silent> <F3> <C-\><C-N>:NERDTreeToggle<CR>
+nmap <silent> <leader>nf :NERDTreeFind<CR>
+imap <silent> <leader>nf <C-\><C-N>:NERDTreeFind<CR>
+
+" SearchHighlighting
+nmap <silent> <leader>hh <Plug>SearchHighlightingToggleHlsearch
+imap <silent> <leader>hh <C-\><C-O><Plug>SearchHighlightingToggleHlsearch
+vmap <silent> <leader>hh <Plug>SearchHighlightingToggleHlsearch
+nmap <silent> <leader>ah <Plug>SearchHighlightingAutoSearch
+imap <silent> <leader>ah <C-\><C-O><Plug>SearchHighlightingAutoSearch
+vmap <silent> <leader>ah <Plug>SearchHighlightingAutoSearch
+
+" Tagbar
+nmap <silent> <F5> :TagbarToggle<CR>
+imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
+
+" undotree
+nmap <silent> <leader>u :UndotreeToggle<CR>
+
+" vim-cutlass
+nnoremap x d
+xnoremap x d
+nnoremap xx dd
+nnoremap X D
+
+" vim-yoink
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
+
+" vimspector
+nmap <F7>         <Plug>VimspectorPause
+nmap <leader><F7> <Plug>VimspectorStop
+nmap <F8>         <Plug>VimspectorToggleBreakpoint
+nmap <leader><F8> <Plug>VimspectorToggleConditionalBreakpoint
+nmap <F9>         <Plug>VimspectorContinue
+nmap <leader><F9> <Plug>VimspectorRestart
+
+
+" vim:set foldenable foldmethod=marker:
