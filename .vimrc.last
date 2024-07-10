@@ -16,6 +16,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'maxItems': 10,
     \   'minAutoCompleteLength': 3,
+    \   'minManualCompleteLength': 2,
     \   'keywordPattern': '\k+',
     \   'matchers': ['matcher_head'],
     \   'sorters': ['sorter_rank'],
