@@ -91,6 +91,9 @@ let g:undotree_DiffpanelHeight = 13
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_DiffCommand = 'git diff --no-index --no-color --no-ext-diff'
 
+" vim9-cutlass
+let g:vim9cutlass_cut = 'x'
+
 " vim-clap
 let g:clap_start_server_on_startup = 0
 
@@ -147,12 +150,6 @@ imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
 
 " undotree
 nmap <silent> <leader>u :UndotreeToggle<CR>
-
-" vim-cutlass
-nnoremap x d
-xnoremap x d
-nnoremap xx dd
-nnoremap X D
 
 " vim-yoink
 nmap p <plug>(YoinkPaste_p)
