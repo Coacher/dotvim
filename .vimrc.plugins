@@ -6,6 +6,7 @@ scriptencoding utf-8
 let g:ale_cache_executable_check_failures = 1
 let g:ale_hover_cursor = 0
 let g:ale_keep_list_window_open = 1
+let g:ale_linters_ignore = {'vim': ['vint']}
 let g:ale_set_balloons = 0
 let g:ale_sign_error = '✘›'
 let g:ale_sign_warning = '‼›'
@@ -109,11 +110,6 @@ let g:lsp_settings_enable_suggestions = 0
 let g:virtualenv#directory = '/home/coacher/Work/Repos'
 let g:virtualenv#enable_gutentags_support = 1
 
-" vim-yoink
-let g:yoinkSyncNumberedRegisters = 1
-let g:yoinkIncludeDeleteOperations = 1
-let g:yoinkSavePersistently = 0
-
 " vimspector
 let g:vimspector_enable_auto_hover = 0
 let g:vimspector_bottombar_height = 20
@@ -150,14 +146,6 @@ imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
 
 " undotree
 nmap <silent> <leader>u :UndotreeToggle<CR>
-
-" vim-yoink
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap y <plug>(YoinkYankPreserveCursorPosition)
-xmap y <plug>(YoinkYankPreserveCursorPosition)
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
 
 " vimspector
 nmap <F7>         <Plug>VimspectorPause

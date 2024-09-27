@@ -50,9 +50,6 @@ map <kEnter> <CR>
 " Execute one command, return to Insert mode
 imap \\ <C-O>
 
-" Make Visual mode paste preserve registers
-vnoremap p P`]
-
 
 "
 " Movement mappings
@@ -91,13 +88,11 @@ vnoremap < <gv
 nnoremap > >>
 nnoremap < <<
 
-" Use '/; instead of ;/,
-noremap ' ;
-noremap ; ,
+" Use <leader>; instead of ,
+noremap <leader>; ,
 
-" Use g'/g; instead of g,/g;
-noremap g; g;
-noremap g' g,
+" Use <leader>g; instead of g,
+noremap <leader>g; g,
 
 " Use -/= instead of (/)
 noremap - (
