@@ -356,6 +356,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'liuchengxu/vim-clap', {'do': ':call clap#installer#build_all()'}
 " Development
 Plug 'dense-analysis/ale'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Coacher/vim-virtualenv'

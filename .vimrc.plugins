@@ -14,8 +14,12 @@ let g:ale_sign_info = '*›'
 let g:ale_sign_style_error = '✗›'
 let g:ale_sign_style_warning = '⁈›'
 let g:ale_virtualtext_cursor = 0
+let g:ale_python_pylint_options = '--enable-all-extensions'
 highlight ALEErrorSign cterm=standout ctermfg=196 gui=standout guifg=Red
 highlight ALEWarningSign cterm=bold ctermfg=220 gui=bold guifg=Gold
+
+" Black
+let g:black_use_virtualenv = 0
 
 " DiffChar
 let g:DiffUnit = 'Word3'
@@ -107,7 +111,7 @@ let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_settings_enable_suggestions = 0
 
 " vim-virtualenv
-let g:virtualenv#directory = '/home/coacher/Work/Repos'
+let g:virtualenv#directory = '/home/coacher/Work/Venvs'
 let g:virtualenv#enable_gutentags_support = 1
 
 " vimspector
