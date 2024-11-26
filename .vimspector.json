@@ -1,0 +1,27 @@
+{
+    "configurations": {
+        "Python": {
+            "adapter": "debugpy",
+            "filetypes": [ "python" ],
+            "configuration": {
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "args": [ "*${CommandLineArgs}" ],
+                "python": [ "python", "-B" ],
+                "cwd": "${cwd}",
+                "stopOnEntry": true,
+                "console": "internalConsole",
+                "justMyCode": true,
+                "showReturnValue": true
+            },
+            "breakpoints": {
+                "exception": {
+                    "raised": "N",
+                    "uncaught": "Y",
+                    "userUnhandled": "Y"
+                }
+            }
+        }
+    }
+}
