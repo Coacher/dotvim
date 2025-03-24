@@ -64,7 +64,6 @@ let g:NERDTreeMapPreviewVSplit = 'gv'
 
 " python-indent
 let g:python_indent_line_up_closing_bracket_with_last_line = 0
-let g:python_indent_extra_indent_in_multiline_if_condition = 0
 
 " SpellCheck
 let g:SpellCheck_DefineAuxiliaryCommands = 0

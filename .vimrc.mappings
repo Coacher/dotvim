@@ -162,8 +162,9 @@ augroup END
 "
 augroup customfiletypes
 autocmd!
-autocmd FileType gitconfig setlocal noexpandtab
+autocmd FileType *commit call cursor(1, 1)
 autocmd FileType *sql let &l:formatprg='sqlformat -i lower -k upper -rs -'
+autocmd FileType gitconfig setlocal noexpandtab
 augroup END
 
 
