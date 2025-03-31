@@ -237,10 +237,12 @@ set completepopup=height:20,width:80,highlight:PMenu,align:item,border:on
 
 " Enable the enhanced command-line completion
 set wildmenu wildmode=list:longest,list:full
+" Ignore case during command-line completion
+set wildignorecase
 " Do not complete filenames with extensions listed below
-set wildignore+=*.out,*.o,*.lo,*.so,*.ko,*.a,*.la,*.lai,*.pyc,*.pyo
-set wildignore+=*.jpg,*.png,*.tiff,*.pdf,*.djvu,*.dvi,*.ps,*.aux
-set wildignore+=__pycache__
+set wildignore+=*.out,*.o,*.lo,*.so,*.ko,*.a,*.la,*.lai,*.bin,*.dll,*.exe
+set wildignore+=*.jpg,*.png,*.tiff,*.pdf,*.djvu,*.dvi,*.ps,*.aux,*.zip
+set wildignore+=*.pyc,*.pyo,__pycache__
 
 " Fix common user typing problems
 abbreviate № #
@@ -356,13 +358,11 @@ Plug 'Shougo/denite.nvim'
 Plug 'liuchengxu/vim-clap', {'do': ':call clap#installer#build_all()'}
 " Development
 Plug 'dense-analysis/ale'
-Plug 'psf/black', { 'branch': 'stable' }
-Plug 'tpope/vim-fugitive'
+Plug 'psf/black', {'branch': 'stable'}
+Plug 'tpope/vim-fugitive', {'on': 'Git'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Coacher/vim-virtualenv'
 Plug 'puremourning/vimspector'
-Plug 'Shougo/vimproc.vim', {'do': ':term ++close ++rows=10 make all'}
-Plug 'Shougo/vinarise.vim', {'on': 'Vinarise'}
 " Completion
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/ddc.vim'
@@ -377,13 +377,14 @@ Plug 'Shougo/ddc-source-around'
 Plug 'Shougo/neco-syntax'
 Plug 'hokorobi/ddc-source-neco-syntax'
 Plug 'delphinus/ddc-ctags'
+Plug 'uga-rosa/ddc-source-dictionary'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/ddc-source-vim'
 Plug 'matsui54/ddc-source-buffer'
 Plug 'LumaKernel/ddc-source-file'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'shun/ddc-source-vim-lsp'
+Plug 'Shougo/ddc-source-lsp'
 Plug 'Shougo/echodoc.vim'
 call plug#end()
 filetype on

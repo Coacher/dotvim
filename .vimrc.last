@@ -25,23 +25,24 @@ call ddc#custom#patch_global('sourceOptions', {
 \})
 
 " Local to the cursor: around
-" Local to the file: necosyntax, ctags / necovim, vim
+" Local to the file: necosyntax, ctags / necovim, dictionary, vim
 " Local to the buffers: buffer
-" Local to the project: file, vim-lsp
+" Local to the project: file, lsp
 call ddc#custom#patch_global('sources', [
-    \ 'vim-lsp', 'buffer', 'ctags', 'necosyntax', 'around', 'file'
+    \ 'lsp', 'buffer', 'ctags', 'necosyntax', 'around', 'dictionary', 'file'
 \])
 
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'around': {'mark': '[around]', 'maxItems': 6},
-\})
-" Search two screens above and below the cursor position.
-call ddc#custom#patch_global('sourceParams', {
-    \ 'around': {'maxSize': 120},
+    \ 'around': {
+    \   'mark': '[around]',
+    \   'maxItems': 6,
+    \ },
 \})
 
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'necosyntax': {'mark': '[syntax]'},
+    \ 'necosyntax': {
+    \   'mark': '[syntax]',
+    \ },
 \})
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -53,7 +54,30 @@ call ddc#custom#patch_global('sourceOptions', {
 \})
 
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'buffer': {'mark': '[buffer]', 'maxItems': 6},
+    \ 'dictionary': {
+    \   'mark': '[spell]',
+    \   'maxItems': 8,
+    \   'keywordPattern': '\S+',
+    \   'isVolatile': v:true,
+    \   'enabledIf': '!empty(&spell)',
+    \ },
+\})
+
+call ddc#custom#patch_global('sourceParams', {
+    \ 'dictionary': {
+    \   'paths': [
+    \       '/home/coacher/.vim/spell/en.words',
+    \       '/home/coacher/.vim/spell/ru.words',
+    \   ],
+    \   'firstCaseInsensitive': v:true,
+    \ },
+\})
+
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'buffer': {
+    \   'mark': '[buffer]',
+    \   'maxItems': 6,
+    \ },
 \})
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -61,7 +85,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'mark': '[file]',
     \   'maxItems': 32,
     \   'isVolatile': v:true,
-    \   'forceCompletionPattern': '\S\/\S*',
+    \   'forceCompletionPattern': '\S+\/\S*',
     \ },
 \})
 call ddc#custom#patch_global('sourceParams', {
@@ -74,19 +98,32 @@ call ddc#custom#patch_global('sourceParams', {
 \})
 
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'vim-lsp': {
+    \ 'lsp': {
     \   'mark': '[lsp]',
     \   'matchers': ['matcher_fuzzy'],
     \   'sorters': ['sorter_fuzzy'],
     \ },
 \})
 
+call ddc#custom#patch_global('sourceParams', {
+    \ 'lsp': {
+    \   'lspEngine': 'vim-lsp',
+    \   'confirmBehavior': 'replace',
+    \   'enableAdditionalTextEdit': v:true,
+    \   'enableResolveItem': v:true,
+    \ },
+\})
+
 call ddc#custom#patch_filetype('vim', {
-    \ 'sources': ['vim', 'buffer', 'necovim', 'around', 'file'],
+    \ 'sources': ['vim', 'buffer', 'necovim', 'around', 'dictionary', 'file'],
 \})
+
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'necovim': {'mark': '[viml]'},
+    \ 'necovim': {
+    \   'mark': '[viml]',
+    \ },
 \})
+
 call ddc#custom#patch_global('sourceOptions', {
     \ 'vim': {
     \   'mark': '[vim]',
