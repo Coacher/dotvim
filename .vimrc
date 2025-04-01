@@ -333,33 +333,32 @@ source ~/.vimrc.plugins
 " Plugins
 "
 call plug#begin('~/.vim/plugins/')
-" Basic
+" Core
 Plug 'junegunn/vim-plug'
 Plug 'jnurmine/Zenburn'
 Plug 'Coacher/python-syntax'
 Plug 'Coacher/python-indent'
 Plug 'tpope/vim-repeat'
 Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-visualrepeat'
 Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'tpope/vim-unimpaired'
 Plug 'Coacher/vim9-cutlass'
 Plug 'Coacher/vim9-buckler'
-Plug 'rickhowe/diffchar.vim'
-Plug 'preservim/nerdtree'
 Plug 'preservim/vim-indent-guides'
+Plug 'preservim/nerdtree'
+Plug 'rickhowe/diffchar.vim'
+" Extra
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
-" UI
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'roxma/nvim-yarp'
-Plug 'Shougo/denite.nvim'
-Plug 'liuchengxu/vim-clap', {'do': ':call clap#installer#build_all()'}
-" Development
-Plug 'dense-analysis/ale'
-Plug 'psf/black', {'branch': 'stable'}
 Plug 'tpope/vim-fugitive', {'on': 'Git'}
+" UI
+Plug 'liuchengxu/vim-clap', {'do': ':Clap install-binary'}
+" Development
+Plug 'psf/black', {'branch': 'stable'}
+Plug 'dense-analysis/ale'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Coacher/vim-virtualenv'
 Plug 'puremourning/vimspector'
@@ -387,7 +386,6 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'Shougo/ddc-source-lsp'
 Plug 'Shougo/echodoc.vim'
 call plug#end()
-filetype on
 "
 " Source configuration files that require plugins in 'runtimepath'
 "

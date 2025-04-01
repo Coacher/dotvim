@@ -15,8 +15,10 @@ let g:ale_sign_style_error = '✗›'
 let g:ale_sign_style_warning = '⁈›'
 let g:ale_virtualtext_cursor = 0
 let g:ale_python_pylint_options = '--enable-all-extensions'
-highlight ALEErrorSign cterm=standout ctermfg=196 gui=standout guifg=Red
-highlight ALEWarningSign cterm=bold ctermfg=220 gui=bold guifg=Gold
+let g:airline#extensions#ale#enabled = 0
+
+highlight ALEErrorSign   cterm=standout ctermfg=196 gui=standout guifg=Red
+highlight ALEWarningSign cterm=bold     ctermfg=220 gui=bold     guifg=Gold
 
 " Black
 let g:black_use_virtualenv = 0
@@ -98,9 +100,6 @@ let g:undotree_DiffCommand = 'git diff --no-index --no-color --no-ext-diff'
 " vim9-cutlass
 let g:vim9cutlass_cut = 'x'
 
-" vim-clap
-let g:clap_start_server_on_startup = 0
-
 " vim-lsp
 let g:lsp_completion_documentation_enabled = 0
 let g:lsp_diagnostics_enabled = 0
@@ -110,7 +109,7 @@ let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_settings_enable_suggestions = 0
 
 " vim-virtualenv
-let g:virtualenv#directory = '/home/coacher/Work/Venvs'
+let g:virtualenv#directory = expand('~/Work/Venvs')
 let g:virtualenv#enable_gutentags_support = 1
 
 " vimspector
@@ -149,6 +148,14 @@ imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
 
 " undotree
 nmap <silent> <leader>u :UndotreeToggle<CR>
+
+" vim-clap
+nmap <silent> <F4> :Clap buffers<CR>
+imap <silent> <F4> <C-\><C-N>:Clap buffers<CR>
+nmap <silent> <C-F> :Clap files<CR>
+imap <silent> <C-F> <C-\><C-O>:Clap files<CR>
+nmap <silent> <C-G> :Clap grep<CR>
+imap <silent> <C-G> <C-\><C-O>:Clap grep<CR>
 
 " vimspector
 nmap <F7>         <Plug>VimspectorPause
