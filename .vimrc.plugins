@@ -30,6 +30,10 @@ let g:DiffUnit = 'Word3'
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'popup'
 
+" fzf.vim
+let g:fzf_vim = {}
+let g:fzf_vim.buffers_jump = 1
+
 " Gutentags
 let g:gutentags_cache_dir = '~/.vim/tags'
 let g:gutentags_project_root = ['pyvenv.cfg']
@@ -128,6 +132,14 @@ imap <silent> <F6> <C-\><C-O>:ALEToggle<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
+" fzf.vim
+nmap <silent> <F4> :Buffers<CR>
+imap <silent> <F4> <C-\><C-N>:Buffers<CR>
+nmap <silent> <C-F> :GFiles<CR>
+imap <silent> <C-F> <C-\><C-O>:GFiles<CR>
+nmap <silent> <C-G> :Rg<CR>
+imap <silent> <C-G> <C-\><C-O>:Rg<CR>
+
 " NERDTree
 nmap <silent> <F3> :NERDTreeToggle<CR>
 imap <silent> <F3> <C-\><C-N>:NERDTreeToggle<CR>
@@ -148,14 +160,6 @@ imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
 
 " undotree
 nmap <silent> <leader>u :UndotreeToggle<CR>
-
-" vim-clap
-nmap <silent> <F4> :Clap buffers<CR>
-imap <silent> <F4> <C-\><C-N>:Clap buffers<CR>
-nmap <silent> <C-F> :Clap files<CR>
-imap <silent> <C-F> <C-\><C-O>:Clap files<CR>
-nmap <silent> <C-G> :Clap grep<CR>
-imap <silent> <C-G> <C-\><C-O>:Clap grep<CR>
 
 " vimspector
 nmap <F7>         <Plug>VimspectorPause

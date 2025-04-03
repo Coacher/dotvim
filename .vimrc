@@ -353,9 +353,11 @@ Plug 'rickhowe/diffchar.vim'
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
+Plug 'rhysd/vim-healthcheck', {'on': 'CheckHealth'}
 Plug 'tpope/vim-fugitive', {'on': 'Git'}
 " UI
-Plug 'liuchengxu/vim-clap', {'do': ':Clap install-binary'}
+Plug 'junegunn/fzf', {'do': ':call fzf#install()'}
+Plug 'junegunn/fzf.vim',
 " Development
 Plug 'psf/black', {'branch': 'stable'}
 Plug 'dense-analysis/ale'
