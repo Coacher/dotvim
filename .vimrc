@@ -349,6 +349,7 @@ Plug 'Coacher/vim9-buckler'
 Plug 'preservim/vim-indent-guides'
 Plug 'preservim/nerdtree'
 Plug 'rickhowe/diffchar.vim'
+Plug 'mg979/vim-visual-multi'
 " Extra
 Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
