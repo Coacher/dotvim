@@ -238,7 +238,7 @@ set complete+=kspell
 " Gather completion candidates using fuzzy matching
 set completefuzzycollect=keyword
 " Set the preferred completion options
-set completeopt=fuzzy,longest,menu
+set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the completion popup
 set completepopup=height:20,width:80,highlight:PMenu,align:item,border:on
 
