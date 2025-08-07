@@ -72,6 +72,11 @@ set shortmess+=F
 
 " Show search count message when searching
 set shortmess-=S
+" Increase the maximum number of matches shown
+set maxsearchcount=999
+
+" Enable smooth scrolling
+set smoothscroll
 
 " Do not redraw the screen for commands that have not been typed
 set lazyredraw
@@ -230,8 +235,10 @@ set splitright
 
 " Use the currently active spell checking for completion
 set complete+=kspell
+" Gather completion candidates using fuzzy matching
+set completefuzzycollect=keyword
 " Set the preferred completion options
-set completeopt=menu,longest
+set completeopt=fuzzy,longest,menu
 " Set the parameters for the completion popup
 set completepopup=height:20,width:80,highlight:PMenu,align:item,border:on
 

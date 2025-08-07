@@ -18,10 +18,12 @@ set iminsert=0 imsearch=-1
 nmap <silent> <leader><leader> :startinsert<CR>
 imap <silent> <leader><leader> <C-\><C-O>:stopinsert<CR>
 vmap <silent> <leader><leader> <C-\><C-N>
+tmap <silent> <leader><leader> <C-\><C-N>
 
 nmap <silent> <F1> :startinsert<CR>
 imap <silent> <F1> <C-\><C-O>:stopinsert<CR>
 vmap <silent> <F1> <C-\><C-N>
+tmap <silent> <F1> <C-\><C-N>
 
 " Save
 nmap <F2> :w!<CR>
