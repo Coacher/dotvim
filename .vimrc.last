@@ -79,6 +79,12 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'maxItems': 6,
     \ },
 \})
+call ddc#custom#patch_global('sourceParams', {
+    \ 'buffer': {
+    \   'bufNameStyle': 'basename',
+    \   'requireSameFiletype': v:false,
+    \ },
+\})
 
 call ddc#custom#patch_global('sourceOptions', {
     \ 'file': {
