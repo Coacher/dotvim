@@ -48,6 +48,7 @@ call ddc#custom#patch_global('sourceOptions', {
 call ddc#custom#patch_global('sourceOptions', {
     \ 'ctags': {
     \   'mark': '[ctags]',
+    \   'isVolatile': v:true,
     \   'matchers': ['matcher_fuzzy'],
     \   'sorters': ['sorter_fuzzy'],
     \ },
