@@ -17,47 +17,43 @@ scriptencoding utf-8
 "
 " Set end-of-line formats in the order of preference
 set fileformats=unix,dos,mac
-
 " Enable file type detection and load available plugin and indent files
 filetype plugin indent on
-
 " Enable syntax highlighting
 syntax enable
-
 " Change the current working directory to the directory containing the file
 set autochdir
-
 " Automatically read the file again when it has been changed outside of Vim
 set autoread
-
 " Disable all beeps
 set belloff=all
-
 " Disable swap files
 set noswapfile
 " Keep swap files in a single directory
 set directory=~/.vim/swp
-
 " Save undo history on buffer writes and restore it on buffer reads
 set undofile
 " Keep undo files in a single directory
 set undodir=~/.vim/undo
 " Disable undo history for certain kinds of files listed below
-augroup restrictundofile
+augroup vimrc_restrictundofile
 autocmd!
 autocmd FileType   *commit setlocal noundofile
 autocmd FileType gitrebase setlocal noundofile
+autocmd BufReadPre /boot/* setlocal noundofile
 autocmd BufReadPre /etc/*  setlocal noundofile
 autocmd BufReadPre /opt/*  setlocal noundofile
 autocmd BufReadPre /run/*  setlocal noundofile
+autocmd BufReadPre /srv/*  setlocal noundofile
 autocmd BufReadPre /tmp/*  setlocal noundofile
 autocmd BufReadPre /usr/*  setlocal noundofile
 autocmd BufReadPre /var/*  setlocal noundofile
-autocmd BufReadPre $HOME/Documents/* setlocal noundofile
-autocmd BufReadPre $HOME/Downloads/* setlocal noundofile
-autocmd BufReadPre $HOME/Music/*     setlocal noundofile
-autocmd BufReadPre $HOME/Images/*    setlocal noundofile
-autocmd BufReadPre $HOME/Videos/*    setlocal noundofile
+autocmd BufReadPre $HOME/Documents/*   setlocal noundofile
+autocmd BufReadPre $HOME/Downloads/*   setlocal noundofile
+autocmd BufReadPre $HOME/Images/*      setlocal noundofile
+autocmd BufReadPre $HOME/Mountpoints/* setlocal noundofile
+autocmd BufReadPre $HOME/Music/*       setlocal noundofile
+autocmd BufReadPre $HOME/Videos/*      setlocal noundofile
 augroup END
 
 
@@ -66,45 +62,32 @@ augroup END
 "
 " Disable the intro message
 set shortmess+=I
-
 " Disable the file info message after opening a file
 set shortmess+=F
-
 " Show search count message when searching
 set shortmess-=S
 " Increase the maximum number of matches shown
 set maxsearchcount=999
-
 " Enable smooth scrolling
 set smoothscroll
-
 " Do not redraw the screen for commands that have not been typed
 set lazyredraw
-
 " Enable fast terminal connection
 set ttyfast
-
 " Enable mouse in all available modes
 set mouse=a
-
 " Autohide mouse cursor
 set mousehide
-
 " Make the right mouse button pop up a menu and move the cursor
 set mousemodel=popup_setpos
-
 " Show partial command in the last line of the screen
 set showcmd
-
 " Display as much of the last line as possible and do not replace it with "@"
 set display=lastline
-
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=3
-
 " Highlight the 80th and 120th columns
 set colorcolumn=80,120
-
 " Color scheme
 let g:zenburn_high_Contrast = 1
 let g:zenburn_color_also_Ignore = 1
@@ -112,10 +95,8 @@ let g:zenburn_alternate_Visual = 1
 let g:zenburn_old_Visual = 1
 let g:zenburn_italic_Comment = 1
 colorscheme zenburn
-
 " Highlight the current line number with bold in cterm
 highlight CursorLineNr cterm=bold
-
 " Use contrast colors in diff mode
 highlight DiffDelete cterm=bold ctermbg=NONE  ctermfg=9
 highlight DiffAdd    cterm=bold ctermbg=23    ctermfg=NONE
@@ -224,15 +205,12 @@ set foldnestmax=10
 "
 " Number of commands to remember
 set history=8192
-
 " Use 'histogram' algorithm from git to get more readable diffs
-set diffopt+=indent-heuristic,algorithm:histogram
-
+set diffopt+=algorithm:histogram
 " Splitting a window will put the new window below the current one
 set splitbelow
 " Splitting a window will put the new window right of the current one
 set splitright
-
 " Use the currently active spell checking for completion
 set complete+=kspell
 " Gather completion candidates using fuzzy matching
@@ -241,7 +219,6 @@ set completefuzzycollect=keyword
 set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the completion popup
 set completepopup=height:20,width:80,highlight:PMenu,align:item,border:on
-
 " Enable the enhanced command-line completion
 set wildmenu wildmode=list:longest,list:full
 " Ignore case during command-line completion
@@ -250,7 +227,6 @@ set wildignorecase
 set wildignore+=*.out,*.o,*.lo,*.so,*.ko,*.a,*.la,*.lai,*.bin,*.dll,*.exe
 set wildignore+=*.jpg,*.png,*.tiff,*.pdf,*.djvu,*.dvi,*.ps,*.aux,*.zip
 set wildignore+=*.pyc,*.pyo,__pycache__
-
 " Fix common user typing problems
 abbreviate № #
 abbreviate teh the
@@ -279,20 +255,20 @@ Plug 'tpope/vim-repeat'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-visualrepeat'
 Plug 'inkarkat/vim-SearchHighlighting'
-Plug 'inkarkat/vim-SpellCheck'
 Plug 'tpope/vim-unimpaired'
 Plug 'Coacher/vim9-cutlass'
 Plug 'Coacher/vim9-buckler'
-Plug 'preservim/vim-indent-guides'
 Plug 'preservim/nerdtree'
-Plug 'rickhowe/diffchar.vim'
-Plug 'mg979/vim-visual-multi'
 " Extra
-Plug 'junegunn/vim-easy-align', {'on': '<Plug>(EasyAlign)'}
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
-Plug 'rhysd/vim-healthcheck', {'on': 'CheckHealth'}
-Plug 'tpope/vim-fugitive', {'on': 'Git'}
+Plug 'inkarkat/vim-SpellCheck'
+Plug 'junegunn/vim-easy-align'
+Plug 'mbbill/undotree'
+Plug 'mg979/vim-visual-multi'
+Plug 'preservim/tagbar'
+Plug 'preservim/vim-indent-guides'
+Plug 'rhysd/vim-healthcheck'
+Plug 'rickhowe/diffchar.vim'
+Plug 'tpope/vim-fugitive'
 " UI
 Plug 'junegunn/fzf', {'do': ':call fzf#install()'}
 Plug 'junegunn/fzf.vim',
@@ -302,6 +278,7 @@ Plug 'dense-analysis/ale'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Coacher/vim-virtualenv'
 Plug 'puremourning/vimspector'
+Plug 'tweekmonster/helpful.vim'
 " Completion
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/ddc.vim'
@@ -325,7 +302,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'Shougo/ddc-source-lsp'
 Plug 'Shougo/echodoc.vim'
+" AI
+Plug 'madox2/vim-ai'
 call plug#end()
+
+
 "
 " Source configuration files that require plugins in 'runtimepath'
 "

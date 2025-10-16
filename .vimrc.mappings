@@ -140,7 +140,7 @@ nmap <silent> <leader>sd zw
 nmap <silent> <leader>sq z=
 
 " Enable spell checking in commit messages
-augroup spellcheckcommits
+augroup vimrc_spellcheckcommits
 autocmd!
 autocmd FileType *commit setlocal spell spelllang=en,ru
 augroup END
@@ -153,7 +153,7 @@ nmap <silent> <leader>dd :call <SID>ToggleDiffMode()<CR>
 nmap <silent> <leader>du :diffupdate!<CR>
 
 " Automatically update diffs after edits
-augroup autoupdatediffs
+augroup vimrc_autoupdatediffs
 autocmd!
 autocmd BufWritePost,TextChanged * if &diff | diffupdate! | endif
 augroup END
@@ -162,7 +162,7 @@ augroup END
 "
 " Custom file types
 "
-augroup customfiletypes
+augroup vimrc_customfiletypes
 autocmd!
 autocmd FileType *commit call cursor(1, 1)
 autocmd FileType gitconfig setlocal noexpandtab

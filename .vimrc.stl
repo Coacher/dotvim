@@ -8,6 +8,9 @@ set laststatus=2
 " Preview window flag
 set statusline=%w
 
+" Current git HEAD
+set statusline+=%.21{StatuslineCurrentHEAD()}
+
 " Path to the file in the buffer, as typed or relative to the current directory
 set statusline+=[%.42f]
 
@@ -44,6 +47,7 @@ set statusline+=%*
 
 " Readonly flag
 set statusline+=%r
+
 " Modified flag
 set statusline+=%m
 
@@ -62,25 +66,32 @@ set statusline+=%=
 
 " Current highlight
 set statusline+=%{StatuslineCurrentHighlight()}
+
 " Cursor line, column
 set statusline+=%(\ (line\ %l,\ col\ %v)\ %)
+
 " Percentage/total lines
 set statusline+=%P/%L
 
 
 " Status line functions {{{
+" Return git HEAD of the current buffer
+function! StatuslineCurrentHEAD()
+    let l:head = fugitive#Head()
+    return empty(l:head) ? '' : '╎'.l:head.'⟩'
+endfunction
+
 " Return syntax highlight group under the cursor
 function! StatuslineCurrentHighlight()
     let l:name = synIDattr(synID(line('.'), col('.'), 1), 'name')
-    if empty(l:name)
-        return ''
-    else
-        return '['.l:name.']'
-    endif
+    return empty(l:name) ? '' : '['.l:name.']'
 endfunction
 
 " Return '[expandtab]' if indentation does not match 'expandtab'
 function! StatuslineExpandtabWarning()
+    if get(b:, 'nostatusline_expandtab', 0)
+        return ''
+    endif
     if !exists('b:statusline_expandtab_warning')
         let b:statusline_expandtab_warning = ''
 
@@ -100,6 +111,9 @@ endfunction
 
 " Return '[mixed-indent]' if mixed indentation was found
 function! StatuslineMixedIndentWarning()
+    if get(b:, 'nostatusline_mixed_indent', 0)
+        return ''
+    endif
     if !exists('b:statusline_mixed_indent_warning')
         let b:statusline_mixed_indent_warning = ''
 
@@ -116,6 +130,9 @@ endfunction
 
 " Return '[trailing-space]' if trailing space was found
 function! StatuslineTrailingSpaceWarning()
+    if get(b:, 'nostatusline_trailing_space', 0)
+        return ''
+    endif
     if !exists('b:statusline_trailing_space_warning')
         let b:statusline_trailing_space_warning = ''
 
@@ -130,7 +147,7 @@ function! StatuslineTrailingSpaceWarning()
     return b:statusline_trailing_space_warning
 endfunction
 
-augroup vimrcstatusline
+augroup vimrc_statusline
 autocmd!
 autocmd BufWritePost,CursorHold * unlet! b:statusline_expandtab_warning
 autocmd BufWritePost,CursorHold * unlet! b:statusline_mixed_indent_warning
