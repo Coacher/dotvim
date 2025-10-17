@@ -155,8 +155,8 @@ set wrap
 set linebreak
 " Make wrapped lines visually indented, thus preserving horizontal blocks
 set breakindent
-" Show EOL characters, tabs, trailing spaces, non-breakable spaces
-set list listchars=eol:↲,tab:»·,trail:·,nbsp:¬
+" Show EOL characters, tabs, leading and trailing spaces, non-breakable spaces
+set list
 " Show the start of lines that have been wrapped
 set showbreak=↳
 " Allow virtual editing in Visual block mode
@@ -178,6 +178,12 @@ set formatoptions+=o
 set clipboard=unnamedplus
 " Increase mappings timeout, decrease key codes timeout
 set timeoutlen=3000 ttimeoutlen=100
+" Update listchars when shiftwidth changes
+augroup vimrc_updatelistchars
+autocmd!
+autocmd VimEnter * call s:UpdateListchars()
+autocmd OptionSet shiftwidth call s:UpdateListchars()
+augroup END
 
 
 "
@@ -265,10 +271,10 @@ Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi'
 Plug 'preservim/tagbar'
-Plug 'preservim/vim-indent-guides'
 Plug 'rhysd/vim-healthcheck'
 Plug 'rickhowe/diffchar.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 " UI
 Plug 'junegunn/fzf', {'do': ':call fzf#install()'}
 Plug 'junegunn/fzf.vim',
@@ -311,3 +317,12 @@ call plug#end()
 " Source configuration files that require plugins in 'runtimepath'
 "
 source ~/.vimrc.last
+
+
+" Helper functions {{{
+function! s:UpdateListchars()
+    let l:template = ' listchars=eol:↲,tab:»\ ⎹,trail:·,nbsp:¬,leadmultispace:'
+    execute 'set'.v:option_type.l:template.repeat('\ ', &shiftwidth - 1).'⎹'
+endfunction
+" }}}
+" vim:set foldenable foldmethod=marker:

@@ -52,6 +52,12 @@ map <kEnter> <CR>
 " Execute one command, return to Insert mode
 imap \\ <C-O>
 
+" Reselect pasted text
+noremap <leader>vp `[v`]
+
+" Neutralize q:
+nmap q: :q
+
 
 "
 " Movement mappings
