@@ -166,16 +166,6 @@ augroup END
 
 
 "
-" Custom file types
-"
-augroup vimrc_customfiletypes
-autocmd!
-autocmd FileType *commit call cursor(1, 1)
-autocmd FileType gitconfig setlocal noexpandtab
-augroup END
-
-
-"
 " Misc mappings
 "
 " Toggle location list
@@ -196,8 +186,13 @@ imap <silent> <leader>cc <C-\><C-O>:setlocal cursorcolumn!<CR>
 vmap <silent> <leader>cl <C-\><C-N>:setlocal cursorline!<CR>gv
 vmap <silent> <leader>cc <C-\><C-N>:setlocal cursorcolumn!<CR>gv
 
+" Toggle indent guides highlighting
+nmap <silent> <leader>ig :setlocal list!<CR>
+imap <silent> <leader>ig <C-\><C-O>:setlocal list!<CR>
+vmap <silent> <leader>ig <C-\><C-N>:setlocal list!<CR>gv
+
 " Toggle Paste mode
-nmap <silent> <leader>P :setlocal paste!<CR>
+nmap <silent> <leader>pm :setlocal paste!<CR>
 
 
 " Mapping functions {{{

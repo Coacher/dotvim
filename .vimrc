@@ -76,8 +76,6 @@ set lazyredraw
 set ttyfast
 " Enable mouse in all available modes
 set mouse=a
-" Autohide mouse cursor
-set mousehide
 " Make the right mouse button pop up a menu and move the cursor
 set mousemodel=popup_setpos
 " Show partial command in the last line of the screen
@@ -86,8 +84,6 @@ set showcmd
 set display=lastline
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=3
-" Highlight the 80th and 120th columns
-set colorcolumn=80,120
 " Color scheme
 let g:zenburn_high_Contrast = 1
 let g:zenburn_color_also_Ignore = 1
@@ -109,6 +105,8 @@ highlight DiffText   gui=bold   guibg=#00005f guifg=NONE
 "
 " Indentation options
 "
+" Highlight the 80th and 120th columns
+set colorcolumn=80,120
 " Set width for automatic line breaks while editing/formatting
 set textwidth=79
 " Do not break existing long lines, only prevent new ones
@@ -156,7 +154,7 @@ set linebreak
 " Make wrapped lines visually indented, thus preserving horizontal blocks
 set breakindent
 " Show EOL characters, tabs, leading and trailing spaces, non-breakable spaces
-set list
+set list listchars=eol:↲,tab:»\ ⎹,trail:·,nbsp:¬,leadmultispace:\ \ \ ⎹
 " Show the start of lines that have been wrapped
 set showbreak=↳
 " Allow virtual editing in Visual block mode
@@ -178,12 +176,6 @@ set formatoptions+=o
 set clipboard=unnamedplus
 " Increase mappings timeout, decrease key codes timeout
 set timeoutlen=3000 ttimeoutlen=100
-" Update listchars when shiftwidth changes
-augroup vimrc_updatelistchars
-autocmd!
-autocmd VimEnter * call s:UpdateListchars()
-autocmd OptionSet shiftwidth call s:UpdateListchars()
-augroup END
 
 
 "
@@ -238,6 +230,34 @@ abbreviate № #
 abbreviate teh the
 abbreviate exmaple  example
 abbreviate exmaples examples
+
+
+"
+" Autocommands
+"
+" Adjust options for special buffers
+augroup vimrc_specialbuffers
+autocmd!
+autocmd BufEnter *
+    \ if !empty(&buftype)
+    \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
+    \ | endif
+autocmd BufEnter *
+    \ if !empty(&buftype)
+    \ | let b:nostatusline_trailing_space = 1
+    \ | endif
+augroup END
+" Update listchars when shiftwidth changes
+augroup vimrc_updatelistchars
+autocmd!
+autocmd OptionSet shiftwidth call s:UpdateListchars()
+augroup END
+" Custom filetypes rules
+augroup vimrc_customfiletypes
+autocmd!
+autocmd FileType *commit call cursor(1, 1)
+autocmd FileType gitconfig setlocal noexpandtab
+augroup END
 
 
 "

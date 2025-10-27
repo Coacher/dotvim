@@ -98,13 +98,6 @@ let g:vim_ai_open_chat_presets = {
         \ "rightbelow 80vnew | setlocal noequalalways | setlocal winfixwidth"
 \}
 
-augroup vimrc_vimaioptions
-autocmd!
-autocmd FileType aichat setlocal nonumber
-autocmd FileType aichat setlocal colorcolumn=0
-autocmd FileType aichat let b:nostatusline_trailing_space = 1
-augroup END
-
 " vim-lsp
 let g:lsp_use_native_client = 1
 let g:lsp_completion_documentation_enabled = 0
@@ -116,6 +109,7 @@ let g:lsp_settings_enable_suggestions = 0
 
 " vim-virtualenv
 let g:virtualenv#directory = expand('~/Dev/.virtualenvs')
+let g:virtualenv#auto_activate_everywhere = 1
 let g:virtualenv#enable_gutentags_support = 1
 
 " vim-visual-multi
