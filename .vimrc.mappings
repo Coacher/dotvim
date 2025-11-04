@@ -43,6 +43,9 @@ vmap <silent> <leader><F1> <C-\><C-N>:terminal<CR>
 " Make Y yank text from the cursor to the end of the line
 nmap Y y$
 
+" Make S delete text from the cursor to the end of the line
+nmap S C
+
 " Use Q for text formatting
 map Q gq
 
@@ -75,6 +78,10 @@ noremap j gj
 noremap k gk
 map <Down> j
 map <Up>   k
+
+" Make <Left>/<Right> produce h/l to help with plugins
+map <Left>  h
+map <Right> l
 
 " Make 0/<k0> move the cursor to the first non-blank character of the line
 noremap 0 ^

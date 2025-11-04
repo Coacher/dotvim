@@ -87,6 +87,11 @@ let g:undotree_DiffpanelHeight = 14
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_DiffCommand = 'git diff --no-index --no-color --no-ext-diff'
 
+augroup vimrc_undotreediffui
+autocmd!
+autocmd BufWinEnter diffpanel* setlocal colorcolumn=0 textwidth=0
+augroup END
+
 " vim9-cutlass
 let g:vim9cutlass_cut = 'x'
 

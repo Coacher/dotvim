@@ -238,12 +238,14 @@ abbreviate exmaples examples
 " Adjust options for special buffers
 augroup vimrc_specialbuffers
 autocmd!
-autocmd BufEnter *
+autocmd BufRead,TerminalOpen,VimEnter *
     \ if !empty(&buftype)
     \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
+    \ | let b:nostatusline_trailing_space = 1
     \ | endif
-autocmd BufEnter *
-    \ if !empty(&buftype)
+autocmd OptionSet buftype
+    \ if !empty(v:option_new)
+    \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
     \ | let b:nostatusline_trailing_space = 1
     \ | endif
 augroup END
