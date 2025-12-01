@@ -1,11 +1,11 @@
 scriptencoding utf-8
-"
-" Status line
-"
-" Always show a status line
+
+" Always show status line
 set laststatus=2
 
+"
 " Status line configuration
+"
 " Preview window flag
 set statusline=%w
 
@@ -78,7 +78,11 @@ set statusline+=%P/%L
 " Status line functions {{{
 " Return git HEAD of the current buffer
 function! StatuslineCurrentHEAD()
-    let l:head = fugitive#Head()
+    try
+        let l:head = fugitive#Head()
+    catch
+        return ''
+    endtry
     return empty(l:head) ? '' : '╎'.l:head.'⟩'
 endfunction
 
@@ -92,8 +96,7 @@ endfunction
 function! StatuslineExpandtabWarning()
     if get(b:, 'nostatusline_expandtab', 0)
         return ''
-    endif
-    if !exists('b:statusline_expandtab_warning')
+    elseif !exists('b:statusline_expandtab_warning')
         let b:statusline_expandtab_warning = ''
 
         if (&readonly || !&modifiable)
@@ -114,8 +117,7 @@ endfunction
 function! StatuslineMixedIndentWarning()
     if get(b:, 'nostatusline_mixed_indent', 0)
         return ''
-    endif
-    if !exists('b:statusline_mixed_indent_warning')
+    elseif !exists('b:statusline_mixed_indent_warning')
         let b:statusline_mixed_indent_warning = ''
 
         if (&readonly || !&modifiable)
@@ -133,8 +135,7 @@ endfunction
 function! StatuslineTrailingSpaceWarning()
     if get(b:, 'nostatusline_trailing_space', 0)
         return ''
-    endif
-    if !exists('b:statusline_trailing_space_warning')
+    elseif !exists('b:statusline_trailing_space_warning')
         let b:statusline_trailing_space_warning = ''
 
         if (&readonly || !&modifiable)
