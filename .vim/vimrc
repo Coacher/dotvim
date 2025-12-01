@@ -37,6 +37,8 @@ set undodir=~/.vim/undo
 "
 " UI options
 "
+" Enable 24-bit colors in the terminal
+set termguicolors
 " Disable the intro message
 set shortmess+=I
 " Disable the file info message after opening a file
