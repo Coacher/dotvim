@@ -166,11 +166,11 @@ nmap <silent> <leader>du :diffupdate!<CR>
 " Misc mappings
 "
 " Toggle location list
-nmap <silent> <leader>ll :call <SID>ToggleWindow('location')<CR>
-imap <silent> <leader>ll <C-\><C-O>:call <SID>ToggleWindow('location')<CR>
+nmap <silent> <leader>ll :call <SID>ToggleWindow('l')<CR>
+imap <silent> <leader>ll <C-\><C-O>:call <SID>ToggleWindow('l')<CR>
 " Toggle quickfix list
-nmap <silent> <leader>qq :call <SID>ToggleWindow('quickfix')<CR>
-imap <silent> <leader>qq <C-\><C-O>:call <SID>ToggleWindow('quickfix')<CR>
+nmap <silent> <leader>qq :call <SID>ToggleWindow('c')<CR>
+imap <silent> <leader>qq <C-\><C-O>:call <SID>ToggleWindow('c')<CR>
 
 " Toggle cursor line/column highlighting
 nmap <silent> <leader>cl :setlocal cursorline!<CR>
@@ -215,17 +215,12 @@ function! s:BufferCount()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 endfunction
 
-function! s:ToggleWindow(windowtype)
-    let l:prefix = a:windowtype[:0]
-    if (a:windowtype ==# 'quickfix')
-        let l:prefix = 'c'
-    endif
-
+function! s:ToggleWindow(prefix)
     let l:buffer_count_before = s:BufferCount()
-    execute 'silent! '.l:prefix.'close'
+    execute 'silent! '.a:prefix.'close'
 
-    if (s:BufferCount() == l:buffer_count_before && l:prefix !=# 'p')
-        execute 'silent! '.l:prefix.'open'
+    if (s:BufferCount() == l:buffer_count_before)
+        execute 'silent! '.a:prefix.'open'
     endif
 endfunction
 " }}}
