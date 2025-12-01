@@ -1,4 +1,5 @@
 scriptencoding utf-8
+
 let g:mapleader = ','
 
 
@@ -40,26 +41,27 @@ nmap <silent> <leader><F1> :terminal<CR>
 imap <silent> <leader><F1> <C-\><C-O>:terminal<CR>
 vmap <silent> <leader><F1> <C-\><C-N>:terminal<CR>
 
-" Make Y yank text from the cursor to the end of the line
-nmap Y y$
-
-" Make S delete text from the cursor to the end of the line
-nmap S C
-
-" Use Q for text formatting
-map Q gq
-
 " Equalize keypad <Enter> and regular <Enter>
 map <kEnter> <CR>
 
 " Execute one command, return to Insert mode
 imap \\ <C-O>
 
-" Reselect pasted text
-noremap <leader>vp `[v`]
+" Use Q for text formatting, except for Select mode
+map Q gq
+sunmap Q
 
 " Neutralize q:
 nmap q: :q
+
+" Make Y yank text from the cursor to the end of the line
+nmap Y y$
+
+" Make S delete text from the cursor to the end of the line
+nmap S C
+
+" Start Visual mode from pasted text
+noremap <leader>vp `[v`]
 
 
 "
@@ -152,24 +154,12 @@ nmap <silent> <leader>sa zg
 nmap <silent> <leader>sd zw
 nmap <silent> <leader>sq z=
 
-" Enable spell checking in commit messages
-augroup vimrc_spellcheckcommits
-autocmd!
-autocmd FileType *commit setlocal spell spelllang=en,ru
-augroup END
-
 
 "
 " Diff mode mappings
 "
 nmap <silent> <leader>dd :call <SID>ToggleDiffMode()<CR>
 nmap <silent> <leader>du :diffupdate!<CR>
-
-" Automatically update diffs after edits
-augroup vimrc_autoupdatediffs
-autocmd!
-autocmd BufWritePost,TextChanged * if &diff | diffupdate! | endif
-augroup END
 
 
 "
@@ -181,9 +171,6 @@ imap <silent> <leader>ll <C-\><C-O>:call <SID>ToggleWindow('location')<CR>
 " Toggle quickfix list
 nmap <silent> <leader>qq :call <SID>ToggleWindow('quickfix')<CR>
 imap <silent> <leader>qq <C-\><C-O>:call <SID>ToggleWindow('quickfix')<CR>
-" Toggle preview window
-nmap <silent> <leader>pp :call <SID>ToggleWindow('preview')<CR>
-imap <silent> <leader>pp <C-\><C-O>:call <SID>ToggleWindow('preview')<CR>
 
 " Toggle cursor line/column highlighting
 nmap <silent> <leader>cl :setlocal cursorline!<CR>
@@ -199,7 +186,7 @@ imap <silent> <leader>ig <C-\><C-O>:setlocal list!<CR>
 vmap <silent> <leader>ig <C-\><C-N>:setlocal list!<CR>gv
 
 " Toggle Paste mode
-nmap <silent> <leader>pm :setlocal paste!<CR>
+nmap <silent> <leader>pp :setlocal paste!<CR>
 
 
 " Mapping functions {{{
