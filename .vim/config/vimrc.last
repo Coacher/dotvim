@@ -143,13 +143,6 @@ call ddc#custom#patch_global('sourceOptions', {
 
 call ddc#enable()
 
-" fzf.vim
-augroup vimrc_fzfvimcmd
-autocmd!
-autocmd VimEnter * command! -bang -nargs=* GR
-    \ call fzf#vim#grep2('rg --pretty --no-heading --smart-case '.<q-args>.' -- ', '', fzf#vim#with_preview(), <bang>0)
-augroup END
-
 " vim-ai
 augroup vimrc_vimaicmd
 autocmd!

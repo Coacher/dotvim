@@ -27,10 +27,6 @@ let g:black_use_virtualenv = 0
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'popup'
 
-" fzf.vim
-let g:fzf_vim = {}
-let g:fzf_vim.buffers_jump = 1
-
 " Gutentags
 let g:gutentags_cache_dir = '~/.vim/tags'
 
@@ -73,14 +69,6 @@ let g:vimspector_bottombar_height = 20
 " ALE
 nmap <silent> <F6> :ALEToggle<CR>
 imap <silent> <F6> <C-\><C-O>:ALEToggle<CR>
-
-" fzf.vim
-nmap <silent> <F4> :Buffers<CR>
-imap <silent> <F4> <C-\><C-N>:Buffers<CR>
-nmap <silent> <C-F> :GFiles<CR>
-imap <silent> <C-F> <C-\><C-O>:GFiles<CR>
-nmap <silent> <C-G> :Rg<CR>
-imap <silent> <C-G> <C-\><C-O>:Rg<CR>
 
 " vimspector
 nmap <F7>         <Plug>VimspectorPause
