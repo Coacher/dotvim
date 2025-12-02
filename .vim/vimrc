@@ -1,6 +1,5 @@
 set nocompatible
 
-
 "
 " Encoding options
 "
@@ -37,6 +36,12 @@ set undodir=~/.vim/undo
 "
 " UI options
 "
+" Enable fast terminal connection
+set ttyfast
+" Do not redraw the screen for commands that have not been typed
+set lazyredraw
+" Enable smooth scrolling
+set smoothscroll
 " Enable 24-bit colors in the terminal
 set termguicolors
 " Disable the intro message
@@ -47,12 +52,6 @@ set shortmess+=F
 set shortmess-=S
 " Increase the maximum number of matches shown
 set maxsearchcount=999
-" Enable smooth scrolling
-set smoothscroll
-" Do not redraw the screen for commands that have not been typed
-set lazyredraw
-" Enable fast terminal connection
-set ttyfast
 " Enable mouse in all available modes
 set mouse=a
 " Make the right mouse button pop up a menu and move the cursor
@@ -117,7 +116,7 @@ set linebreak
 " Make wrapped lines visually indented, thus preserving horizontal blocks
 set breakindent
 " Show EOL characters, tabs, leading and trailing spaces, non-breakable spaces
-set list listchars=eol:↲,tab:»\ ⎹,trail:·,nbsp:¬,leadmultispace:\ \ \ ⎹
+set list | let &listchars='eol:↲,trail:·,nbsp:¬,tab:» ⎹,leadmultispace:   ⎹'
 " Show the start of lines that have been wrapped
 set showbreak=↳
 " Allow virtual editing in Visual block mode
@@ -125,16 +124,16 @@ set showbreak=↳
 set virtualedit=block,onemore
 " Do not insert two spaces after a sentence with a join command
 set nojoinspaces
+" Automatically insert a comment leader after <Enter>
+set formatoptions+=r
+" Automatically insert a comment leader after o/O commands
+set formatoptions+=o
 " When formatting text, recognize numbered lists
 set formatoptions+=n
 " Do not break a line after a one-letter word. Break before it instead
 set formatoptions+=1
 " Remove a comment leader when joining lines
 set formatoptions+=j
-" Automatically insert a comment leader after <Enter>
-set formatoptions+=r
-" Automatically insert a comment leader after o/O commands
-set formatoptions+=o
 " Use the register '+' for all yank, delete, change and put operations
 set clipboard=unnamedplus
 " Increase mappings timeout, decrease key codes timeout

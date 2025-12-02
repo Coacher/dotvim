@@ -63,7 +63,7 @@ augroup END
 
 " Helper functions {{{
 function! s:UpdateListchars()
-    let l:template = ' listchars=eol:↲,tab:»\ ⎹,trail:·,nbsp:¬,leadmultispace:'
+    let l:template = ' listchars=eol:↲,trail:·,nbsp:¬,tab:»\ ⎹,leadmultispace:'
     execute 'set'.v:option_type.l:template.repeat('\ ', shiftwidth() - 1).'⎹'
 endfunction
 " }}}
