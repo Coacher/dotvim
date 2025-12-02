@@ -207,6 +207,8 @@ source ~/.vimrc.plugins
 "
 " Plugins
 "
+packadd! comment
+packadd! matchit
 call plug#begin('~/.vim/plugins/')
 " Core
 Plug 'junegunn/vim-plug'
