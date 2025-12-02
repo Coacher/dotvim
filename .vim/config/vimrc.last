@@ -150,16 +150,6 @@ autocmd VimEnter * command! -bang -nargs=* GR
     \ call fzf#vim#grep2('rg --pretty --no-heading --smart-case '.<q-args>.' -- ', '', fzf#vim#with_preview(), <bang>0)
 augroup END
 
-" SpellCheck
-augroup vimrc_spellcheckcmd
-autocmd!
-autocmd VimEnter * delcommand SpellCheck
-autocmd VimEnter * delcommand SpellLCheck
-autocmd VimEnter * command! -bar -bang -range=% -nargs=*
-    \ -complete=customlist,SpellCheckCompleteFunc Spell
-    \ call SpellCheck#quickfix#List(<line1>, <line2>, <bang>1, 1, <q-args>)
-augroup END
-
 " vim-ai
 augroup vimrc_vimaicmd
 autocmd!

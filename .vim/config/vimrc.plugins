@@ -23,10 +23,6 @@ highlight ALEWarningSign cterm=bold     ctermfg=220 gui=bold     guifg=Gold
 " Black
 let g:black_use_virtualenv = 0
 
-" DiffChar
-let g:DiffUnit = 'Word3'
-let g:DiffDelPosVisible = 0
-
 " echodoc
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'popup'
@@ -41,40 +37,8 @@ let g:gutentags_cache_dir = '~/.vim/tags'
 " neco-syntax
 let g:necosyntax#max_syntax_lines = 500
 
-" SpellCheck
-let g:SpellCheck_DefineAuxiliaryCommands = 0
-
 " sql.vim (default)
 let g:omni_sql_no_default_maps = 1
-
-" Tagbar
-let g:tagbar_ctags_options = ['NONE']
-let g:tagbar_width = 45
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 0
-let g:tagbar_compact = 2
-let g:tagbar_show_balloon = 0
-let g:tagbar_show_visibility = 0
-let g:tagbar_show_tag_count = 1
-let g:tagbar_iconchars = ['+', '∼']
-let g:tagbar_previewwin_pos = 'botright'
-let g:tagbar_silent = 1
-let g:tagbar_wrap = 2
-let g:tagbar_highlight_method = 'scoped-stl'
-let g:tagbar_map_togglefold = ['o', 'za', '<Space>']
-let g:tagbar_map_showproto = []
-
-" undotree
-let g:undotree_WindowLayout = 4
-let g:undotree_SplitWidth = 35
-let g:undotree_DiffpanelHeight = 14
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_DiffCommand = 'git diff --no-index --no-color --no-ext-diff'
-
-augroup vimrc_undotreediffui
-autocmd!
-autocmd BufWinEnter diffpanel* setlocal colorcolumn=0 textwidth=0
-augroup END
 
 " vim-ai
 let g:vim_ai_roles_config_file = expand('~/.vim-ai-roles.ini')
@@ -98,11 +62,6 @@ let g:virtualenv#directory = expand('~/Dev/.virtualenvs')
 let g:virtualenv#auto_activate_everywhere = 1
 let g:virtualenv#enable_gutentags_support = 1
 
-" vim-visual-multi
-let g:VM_maps = {}
-let g:VM_maps['Find Under'] = ''
-let g:VM_maps['Find Subword Under'] = ''
-
 " vimspector
 let g:vimspector_enable_auto_hover = 0
 let g:vimspector_bottombar_height = 20
@@ -115,10 +74,6 @@ let g:vimspector_bottombar_height = 20
 nmap <silent> <F6> :ALEToggle<CR>
 imap <silent> <F6> <C-\><C-O>:ALEToggle<CR>
 
-" EasyAlign
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
 " fzf.vim
 nmap <silent> <F4> :Buffers<CR>
 imap <silent> <F4> <C-\><C-N>:Buffers<CR>
@@ -126,13 +81,6 @@ nmap <silent> <C-F> :GFiles<CR>
 imap <silent> <C-F> <C-\><C-O>:GFiles<CR>
 nmap <silent> <C-G> :Rg<CR>
 imap <silent> <C-G> <C-\><C-O>:Rg<CR>
-
-" Tagbar
-nmap <silent> <F5> :TagbarToggle<CR>
-imap <silent> <F5> <C-\><C-O>:TagbarToggle<CR>
-
-" undotree
-nmap <silent> <leader>u :UndotreeToggle<CR>
 
 " vimspector
 nmap <F7>         <Plug>VimspectorPause
