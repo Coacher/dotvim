@@ -42,3 +42,6 @@ nmap <F8>         <Plug>VimspectorToggleBreakpoint
 nmap <leader><F8> <Plug>VimspectorToggleConditionalBreakpoint
 nmap <F9>         <Plug>VimspectorContinue
 nmap <leader><F9> <Plug>VimspectorRestart
+
+" helpful.vim
+nmap <silent> <leader>bh :let b:helpful = !get(b:, 'helpful')<CR>
