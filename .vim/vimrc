@@ -194,6 +194,8 @@ abbreviate № #
 abbreviate teh the
 abbreviate exmaple  example
 abbreviate exmaples examples
+" Disable default mappings in SQL files, see ':help ft_sql.txt'
+let g:omni_sql_no_default_maps = 1
 
 
 "
