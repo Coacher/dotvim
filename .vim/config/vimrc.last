@@ -143,12 +143,6 @@ call ddc#custom#patch_global('sourceOptions', {
 
 call ddc#enable()
 
-" vim-ai
-augroup vimrc_vimaicmd
-autocmd!
-autocmd VimEnter * delcommand AIStopChat
-autocmd VimEnter * command! AIChatCancel call vim_ai#AIChatStopRun()
-augroup END
 
 
 " Helper functions {{{

@@ -12,14 +12,6 @@ let g:necosyntax#max_syntax_lines = 500
 " sql.vim (default)
 let g:omni_sql_no_default_maps = 1
 
-" vim-ai
-let g:vim_ai_roles_config_file = expand('~/.vim-ai-roles.ini')
-let g:vim_ai_chat = {'ui': {'open_chat_command': 'preset_right'}}
-let g:vim_ai_open_chat_presets = {
-    \ "preset_right":
-        \ "rightbelow 80vnew | setlocal noequalalways | setlocal winfixwidth"
-\}
-
 " vim-lsp
 let g:lsp_use_native_client = 1
 let g:lsp_completion_documentation_enabled = 0
