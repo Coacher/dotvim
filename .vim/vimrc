@@ -62,6 +62,8 @@ set showcmd
 set display=lastline
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=3
+" Default colorscheme
+colorscheme retrobox
 
 
 "
