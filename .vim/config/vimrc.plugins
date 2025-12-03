@@ -2,24 +2,9 @@ scriptencoding utf-8
 "
 " Plugin settings
 "
-" echodoc
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'popup'
-
-" neco-syntax
-let g:necosyntax#max_syntax_lines = 500
 
 " sql.vim (default)
 let g:omni_sql_no_default_maps = 1
-
-" vim-lsp
-let g:lsp_use_native_client = 1
-let g:lsp_completion_documentation_enabled = 0
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_document_code_action_signs_enabled = 0
-
-" vim-lsp-settings
-let g:lsp_settings_enable_suggestions = 0
 
 
 "
