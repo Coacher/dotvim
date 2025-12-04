@@ -171,10 +171,6 @@ augroup END
 " vim-lsp-settings
 let g:lsp_settings_enable_suggestions = 0
 
-" echodoc
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'popup'
-
 
 " Helper functions {{{
 function! s:MapComplete()

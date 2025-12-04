@@ -293,7 +293,6 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'prabirshrestha/vim-lsp'
         Plug 'mattn/vim-lsp-settings'
         Plug 'Shougo/ddc-source-lsp'
-        Plug 'Shougo/echodoc.vim'
     endif
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/ai.vim')
         " AI
