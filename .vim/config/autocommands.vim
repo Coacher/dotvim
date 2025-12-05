@@ -23,11 +23,15 @@ augroup END
 " Adjust options for special buffers
 augroup vimrc_specialbuffers
 autocmd!
-autocmd BufRead,TerminalOpen,VimEnter *
+autocmd BufRead,VimEnter *
     \ if !empty(&buftype)
     \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
     \ | let b:nostatusline_trailing_space = 1
     \ | endif
+if !has('nvim')
+    autocmd TerminalOpen * let b:nostatusline_trailing_space = 1
+        \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
+endif
 autocmd OptionSet buftype
     \ if !empty(v:option_new)
     \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist

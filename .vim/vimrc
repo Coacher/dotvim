@@ -176,11 +176,15 @@ set splitright
 " Use the currently active spell checking for completion
 set complete+=kspell
 " Gather completion candidates using fuzzy matching
-set completefuzzycollect=keyword
+if !has('nvim')
+    set completefuzzycollect=keyword
+endif
 " Set the preferred completion options
 set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the extra completion popup
-set completepopup=border:single,highlight:PMenu,resize:off,height:20,width:80
+if !has('nvim')
+    set completepopup=border:single,highlight:PMenu,resize:off,height:20,width:80
+endif
 " Set the border for the completion popup
 set pumborder=single
 " Enable the enhanced command-line completion
@@ -223,7 +227,9 @@ endfor
 "
 " Plugins
 "
-packadd! comment
+if !has('nvim')
+    packadd! comment
+endif
 packadd! matchit
 
 if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
