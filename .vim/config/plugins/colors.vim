@@ -7,6 +7,10 @@ let g:zenburn_alternate_Visual = 1
 let g:zenburn_old_Visual = 1
 let g:zenburn_italic_Comment = 1
 
+" seoul256
+let g:seoul256_background = 233
+
+" Custom colorscheme
 colorscheme zenburn
 
 " Highlight the current line number with bold in cterm
