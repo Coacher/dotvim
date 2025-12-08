@@ -5,6 +5,8 @@ let g:black_use_virtualenv = 0
 
 " ALE
 let g:ale_cache_executable_check_failures = 1
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '┌', '┐', '┘', '└', '│', '─']
 let g:ale_hover_cursor = 0
 let g:ale_keep_list_window_open = 1
 let g:ale_linters_ignore = {'vim': ['vint']}
