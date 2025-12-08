@@ -52,6 +52,10 @@ set shortmess+=F
 set shortmess-=S
 " Increase the maximum number of matches shown
 set maxsearchcount=999
+" Set block cursor in Insert mode
+set guicursor+=i-ci:block-Cursor/lCursor
+" Disable cursor blinking
+set guicursor+=a:blinkon0
 " Enable mouse in all available modes
 set mouse=a
 " Make the right mouse button pop up a menu and move the cursor
