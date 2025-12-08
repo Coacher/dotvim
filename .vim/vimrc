@@ -179,7 +179,7 @@ set complete+=kspell
 set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the extra completion popup
 if !has('nvim')
-    set completepopup=border:single,highlight:PMenu,resize:off,height:20,width:80
+    set completepopup=border:single,close:off,highlight:PMenu,resize:off,height:20,width:80
 endif
 " Set the border for the completion popup
 set pumborder=single
