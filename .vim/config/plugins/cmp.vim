@@ -156,6 +156,7 @@ let g:lsp_use_native_client = 1
 let g:lsp_completion_documentation_enabled = 0
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
+let g:lsp_peek_alignment = 'top'
 
 augroup vimrc_vimlsppopupconfig
 autocmd!
