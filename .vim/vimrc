@@ -296,6 +296,9 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'LumaKernel/ddc-source-file'
         Plug 'prabirshrestha/vim-lsp'
         Plug 'mattn/vim-lsp-settings'
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'mason-org/mason.nvim'
+        Plug 'mason-org/mason-lspconfig.nvim'
         Plug 'Shougo/ddc-source-lsp'
     endif
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/ai.vim')

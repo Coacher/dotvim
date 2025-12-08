@@ -172,6 +172,21 @@ augroup END
 " vim-lsp-settings
 let g:lsp_settings_enable_suggestions = 0
 
+" mason.nvim & mason-lspconfig.nvim
+function! s:InitMason()
+if has('nvim')
+lua << EOF
+require("mason").setup()
+require("mason-lspconfig").setup()
+EOF
+endif
+endfunction
+
+augroup vimrc_initmason
+autocmd!
+autocmd VimEnter * call s:InitMason()
+augroup END
+
 
 " Helper functions {{{
 function! s:MapComplete()
