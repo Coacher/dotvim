@@ -218,7 +218,6 @@ for s:config in [
     \ 'autocommands',
     \ 'mappings',
     \ 'statusline',
-    \ 'local'
 \]
     call s:CheckAndSource(expand('<script>:h').'/config/'.s:config.'.vim')
 endfor
@@ -313,3 +312,9 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
     endif
     call plug#end()
 endif
+
+
+"
+" Source local.vim for local overrides
+"
+call s:CheckAndSource(expand('<script>:h').'/config/local.vim')
