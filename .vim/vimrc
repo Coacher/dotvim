@@ -300,6 +300,7 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'mason-org/mason.nvim'
         Plug 'mason-org/mason-lspconfig.nvim'
         Plug 'Shougo/ddc-source-lsp'
+        Plug 'matsui54/denops-signature_help'
     endif
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/ai.vim')
         " AI

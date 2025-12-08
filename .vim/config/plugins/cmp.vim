@@ -157,6 +157,7 @@ let g:lsp_completion_documentation_enabled = 0
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_peek_alignment = 'top'
+let g:lsp_signature_help_enabled = 0
 
 augroup vimrc_vimlsppopupconfig
 autocmd!
@@ -185,6 +186,12 @@ endfunction
 augroup vimrc_initmason
 autocmd!
 autocmd VimEnter * call s:InitMason()
+augroup END
+
+" denops-signature_help
+augroup vimrc_initdenopssignaturehelp
+autocmd!
+autocmd VimEnter * call signature_help#enable()
 augroup END
 
 
