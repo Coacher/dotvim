@@ -5,13 +5,8 @@ augroup vimrc_restrictundofile
 autocmd!
 autocmd FileType   *commit setlocal noundofile
 autocmd FileType gitrebase setlocal noundofile
-autocmd BufReadPre /boot/* setlocal noundofile
-autocmd BufReadPre /etc/*  setlocal noundofile
-autocmd BufReadPre /opt/*  setlocal noundofile
 autocmd BufReadPre /run/*  setlocal noundofile
-autocmd BufReadPre /srv/*  setlocal noundofile
 autocmd BufReadPre /tmp/*  setlocal noundofile
-autocmd BufReadPre /usr/*  setlocal noundofile
 autocmd BufReadPre /var/*  setlocal noundofile
 autocmd BufReadPre $HOME/Documents/* setlocal noundofile
 autocmd BufReadPre $HOME/Downloads/* setlocal noundofile
