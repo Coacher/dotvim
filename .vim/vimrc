@@ -175,10 +175,6 @@ set splitbelow
 set splitright
 " Use the currently active spell checking for completion
 set complete+=kspell
-" Gather completion candidates using fuzzy matching
-if !has('nvim')
-    set completefuzzycollect=keyword
-endif
 " Set the preferred completion options
 set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the extra completion popup
