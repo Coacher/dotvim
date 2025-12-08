@@ -28,6 +28,7 @@ function! s:InitDDC()
         \ 'around': {
         \   'mark': '[around]',
         \   'maxItems': 6,
+        \   'matchers': ['matcher_head', 'matcher_length'],
         \ },
     \})
 

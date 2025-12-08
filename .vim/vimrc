@@ -285,6 +285,7 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'Shougo/ddc-ui-native'
         Plug 'Shougo/ddc-ui-none'
         Plug 'Shougo/ddc-filter-matcher_head'
+        Plug 'Shougo/ddc-filter-matcher_length'
         Plug 'Shougo/ddc-filter-sorter_rank'
         Plug 'Shougo/ddc-filter-converter_remove_overlap'
         Plug 'Shougo/ddc-filter-converter_truncate_abbr'
