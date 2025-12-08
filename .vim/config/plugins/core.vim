@@ -13,6 +13,32 @@ vmap <silent> <leader>ah <Plug>SearchHighlightingAutoSearch
 
 " vim9-cutlass
 let g:vim9cutlass_cut = 'x'
+if has('nvim')
+    let g:vim9cutlass_loaded = 1
+endif
+
+" vim9-buckler
+if has('nvim')
+    let g:vim9buckler_loaded = 1
+    xnoremap <silent> p P`]
+endif
+
+" cutlass.nvim
+function! s:InitCutlass()
+if has('nvim')
+lua << EOF
+require("cutlass").setup({
+    cut_key = 'x',
+    override_del = true,
+})
+EOF
+endif
+endfunction
+
+augroup vimrc_initcutlass
+autocmd!
+autocmd VimEnter * call s:InitCutlass()
+augroup END
 
 " NERDTree
 let g:NERDTreeNaturalSort = 1

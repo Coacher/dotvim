@@ -241,6 +241,7 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
     Plug 'tpope/vim-unimpaired'
     Plug 'Coacher/vim9-cutlass'
     Plug 'Coacher/vim9-buckler'
+    Plug 'gbprod/cutlass.nvim'
     Plug 'preservim/nerdtree'
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/colors.vim')
         " Colors
