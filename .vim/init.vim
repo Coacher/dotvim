@@ -1,3 +1,4 @@
-set runtimepath^=~/.vim
+let s:basedir = fnamemodify(resolve(expand('<script>')), ':h')
+let &runtimepath = s:basedir.','.&runtimepath
 let &packpath = &runtimepath
-source ~/.vim/vimrc
+execute 'source '.s:basedir.'/vimrc'
