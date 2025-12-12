@@ -280,6 +280,7 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/cmp.vim')
         " Completion
         Plug 'vim-denops/denops.vim'
+        Plug 'Shougo/context_filetype.vim'
         Plug 'Shougo/ddc.vim'
         Plug 'Shougo/ddc-ui-native'
         Plug 'Shougo/ddc-ui-none'

@@ -134,7 +134,7 @@ function! s:InitDDC()
         \ },
     \})
 
-    call ddc#enable()
+    call ddc#enable({'context_filetype': 'context_filetype'})
 endfunction
 
 augroup vimrc_initddc
