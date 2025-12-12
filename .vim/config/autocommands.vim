@@ -24,8 +24,11 @@ autocmd BufRead,VimEnter *
     \ | let b:nostatusline_trailing_space = 1
     \ | endif
 if !has('nvim')
-    autocmd TerminalOpen * let b:nostatusline_trailing_space = 1
+    autocmd TerminalOpen *
+        \ if !empty(&buftype)
         \ | setlocal colorcolumn=0 textwidth=0 nonumber nolist
+        \ | let b:nostatusline_trailing_space = 1
+        \ | endif
 endif
 autocmd OptionSet buftype
     \ if !empty(v:option_new)
