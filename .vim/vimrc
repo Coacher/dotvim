@@ -300,6 +300,7 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'matsui54/ddc-source-buffer'
         Plug 'LumaKernel/ddc-source-file'
         Plug 'prabirshrestha/vim-lsp'
+        Plug 'Coacher/vim-lsp-ale'
         Plug 'mattn/vim-lsp-settings'
         Plug 'neovim/nvim-lspconfig'
         Plug 'mason-org/mason.nvim'
