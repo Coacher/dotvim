@@ -155,10 +155,25 @@ let g:necosyntax#max_syntax_lines = 500
 " vim-lsp
 let g:lsp_use_native_client = 1
 let g:lsp_completion_documentation_enabled = 0
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_signs_error = {'text': g:ale_sign_error}
+let g:lsp_diagnostics_signs_warning = {'text': g:ale_sign_warning}
+let g:lsp_diagnostics_signs_information = {'text': g:ale_sign_info}
+let g:lsp_diagnostics_signs_hint = {'text': g:ale_sign_info}
+let g:lsp_diagnostics_virtual_text_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_peek_alignment = 'top'
 let g:lsp_signature_help_enabled = 0
+
+highlight link LspErrorHighlight       ALEError
+highlight link LspWarningHighlight     ALEWarning
+highlight link LspInformationHighlight ALEInfo
+highlight link LspHintHighlight        ALEInfo
+
+highlight link LspErrorText       ALEErrorSign
+highlight link LspWarningText     ALEWarningSign
+highlight link LspInformationText ALEInfoSign
+highlight link LspHintText        ALEInfoSign
 
 augroup vimrc_vimlsppopupconfig
 autocmd!

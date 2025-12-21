@@ -20,6 +20,10 @@ let g:ale_virtualtext_cursor = 0
 let g:ale_python_pylint_options = '--enable-all-extensions'
 let g:airline#extensions#ale#enabled = 0
 
+highlight link ALEError   SpellBad
+highlight link ALEWarning SpellCap
+highlight link ALEInfo    SpellRare
+
 highlight ALEErrorSign   cterm=standout ctermfg=196 gui=standout guifg=Red
 highlight ALEWarningSign cterm=bold     ctermfg=220 gui=bold     guifg=Gold
 
