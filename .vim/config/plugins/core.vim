@@ -20,24 +20,30 @@ endif
 " vim9-buckler
 if has('nvim')
     let g:vim9buckler_loaded = 1
-    xnoremap <silent> p P`]
 endif
 
-" cutlass.nvim
+" neovim-cutlass
 function! s:InitCutlass()
-if has('nvim')
-lua << EOF
-require("cutlass").setup({
-    cut_key = 'x',
-    override_del = true,
-})
-EOF
-endif
+    if has('nvim')
+        lua require('cutlass').setup({ cut = 'x' })
+    endif
 endfunction
 
 augroup vimrc_initcutlass
 autocmd!
 autocmd VimEnter * call s:InitCutlass()
+augroup END
+
+" neovim-buckler
+function! s:InitBuckler()
+    if has('nvim')
+        lua require('buckler').setup()
+    endif
+endfunction
+
+augroup vimrc_initbuckler
+autocmd!
+autocmd VimEnter * call s:InitBuckler()
 augroup END
 
 " NERDTree

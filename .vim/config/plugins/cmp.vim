@@ -193,8 +193,8 @@ let g:lsp_settings_enable_suggestions = 0
 function! s:InitMason()
 if has('nvim')
 lua << EOF
-require("mason").setup()
-require("mason-lspconfig").setup()
+require('mason').setup()
+require('mason-lspconfig').setup()
 EOF
 endif
 endfunction
