@@ -42,12 +42,12 @@ let g:virtualenv#enable_gutentags_support = 1
 let g:vimspector_enable_auto_hover = 0
 let g:vimspector_bottombar_height = 20
 
-nmap <F7>         <Plug>VimspectorPause
-nmap <leader><F7> <Plug>VimspectorStop
+nmap <F7>         <Plug>VimspectorStepOver
+nmap <leader><F7> <Plug>VimspectorStepInto
 nmap <F8>         <Plug>VimspectorToggleBreakpoint
 nmap <leader><F8> <Plug>VimspectorToggleConditionalBreakpoint
 nmap <F9>         <Plug>VimspectorContinue
-nmap <leader><F9> <Plug>VimspectorRestart
+nmap <leader><F9> <Plug>VimspectorReset
 
 " helpful.vim
 nmap <silent> <leader>bh :let b:helpful = !get(b:, 'helpful')<CR>
