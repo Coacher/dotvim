@@ -30,7 +30,9 @@ set directory=~/.vim/swp
 " Save undo history on buffer writes and restore it on buffer reads
 set undofile
 " Keep undo files in a single directory
-set undodir=~/.vim/undo
+if !has('nvim')
+    set undodir=~/.vim/undo
+endif
 
 
 "
