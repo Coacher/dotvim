@@ -13,8 +13,8 @@ autocmd VimEnter * command! -bang -nargs=* RG
     \   fzf#vim#with_preview(),
     \   <bang>0)
 autocmd VimEnter * command! -bang -nargs=* GGrep
-    \ call fzf#vim#grep(
-    \   'git grep --line-number --column --color=always -- '.fzf#shellescape(<q-args>),
+    \ call fzf#vim#grep2(
+    \   'git grep --line-number --column --color=always -- ', <q-args>,
     \   fzf#vim#with_preview({'dir': trim(system('git rev-parse --show-toplevel'))}),
     \   <bang>0)
 augroup END
