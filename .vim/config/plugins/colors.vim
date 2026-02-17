@@ -23,3 +23,8 @@ highlight DiffText   cterm=bold ctermbg=17    ctermfg=NONE
 highlight DiffDelete gui=bold   guibg=NONE    guifg=#ff0000
 highlight DiffAdd    gui=bold   guibg=#005f5f guifg=NONE
 highlight DiffText   gui=bold   guibg=#00005f guifg=NONE
+
+" Make Neovim floats similar to Vim popups
+highlight! link NormalFloat Pmenu
+highlight! link FloatBorder PmenuBorder
+highlight! link FloatShadow PmenuShadow
