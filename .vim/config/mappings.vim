@@ -36,9 +36,9 @@ nmap <F10> :q<CR>
 imap <F10> <C-\><C-O>:q<CR>
 vmap <F10> <C-\><C-N>:q<CR>
 
-nmap <silent><F10> :qall!<CR>
-imap <silent><F10> <C-\><C-O>:qall!<CR>
-vmap <silent><F10> <C-\><C-N>:qall!<CR>
+nmap <leader><F10> :qall!<CR>
+imap <leader><F10> <C-\><C-O>:qall!<CR>
+vmap <leader><F10> <C-\><C-N>:qall!<CR>
 
 " Terminal
 nmap <silent> <leader><F1> :terminal<CR>
