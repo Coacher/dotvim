@@ -157,6 +157,8 @@ set noincsearch
 set hlsearch
 " Ignore case in the search pattern, unless it contains uppercase characters
 set ignorecase smartcase
+" Always match case when searching the tags file
+set tagcase=match
 
 
 "
