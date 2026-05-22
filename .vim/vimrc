@@ -153,12 +153,10 @@ set timeoutlen=3000 ttimeoutlen=100
 "
 " Disable incremental (typeahead) search
 set noincsearch
-" Disable search highlight on file open
-set nohlsearch
+" Highlight search matches
+set hlsearch
 " Ignore case in the search pattern, unless it contains uppercase characters
 set ignorecase smartcase
-" Always match case when searching the tags file
-set tagcase=match
 
 
 "
