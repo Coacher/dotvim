@@ -52,8 +52,10 @@ set shortmess+=I
 set shortmess+=F
 " Show search count message when searching
 set shortmess-=S
-" Increase the maximum number of matches shown
-set maxsearchcount=999
+if has('patch-9.1.1535')
+    " Increase the maximum number of matches shown
+    set maxsearchcount=999
+endif
 " Set block cursor in Insert mode
 set guicursor+=i-ci:block-Cursor/lCursor-blinkon0
 " Disable cursor blinking
@@ -186,11 +188,13 @@ set complete+=kspell
 " Set the preferred completion options
 set completeopt=fuzzy,menuone,noinsert
 " Set the parameters for the extra completion popup
-if !has('nvim')
+if !has('nvim') && has('patch-9.1.1856')
     set completepopup=border:single,close:off,highlight:PMenu,resize:off,height:20,width:80
 endif
-" Set the border for the completion popup
-set pumborder=single
+if has('patch-9.1.1835')
+    " Set the border for the completion popup
+    set pumborder=single
+endif
 " Enable the enhanced command-line completion
 set wildmenu wildmode=list:longest,list:full
 " Ignore case during command-line completion
