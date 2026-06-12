@@ -1,5 +1,11 @@
 scriptencoding utf-8
 
+" Do not complete filenames with extensions from ~/.wildignore
+augroup vimrc_wildignore
+autocmd!
+autocmd VimEnter * let &wildignore = join(readfile(expand('~/.wildignore')), ',')
+augroup END
+
 " Disable undo history for certain kinds of files listed below
 augroup vimrc_restrictundofile
 autocmd!

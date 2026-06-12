@@ -199,10 +199,6 @@ endif
 set wildmenu wildmode=list:longest,list:full
 " Ignore case during command-line completion
 set wildignorecase
-" Do not complete filenames with extensions listed below
-set wildignore+=*.out,*.o,*.lo,*.so,*.ko,*.a,*.la,*.lai,*.bin,*.dll,*.exe
-set wildignore+=*.jpg,*.png,*.tiff,*.pdf,*.djvu,*.dvi,*.ps,*.aux,*.zip
-set wildignore+=*.pyc,*.pyo,__pycache__
 " Fix common user typing problems
 abbreviate № #
 abbreviate teh the
