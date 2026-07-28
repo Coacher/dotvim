@@ -2,20 +2,13 @@
 
 set -e
 
-CMD="rsync -rlp -Ic --existing -i"
-SRC="$(dirname $(readlink -e ${0}))/.vim/"
+SRC="$(dirname "$(readlink -e "${0}")")/.vim/"
+TGT="${1}"
 
-${CMD} --dry-run "${SRC}" "${1}"
+rclone check "${SRC}" "${TGT}" \
+    --one-way --links --log-file /dev/null --combined - | \
+    rg -v '^=' | sort -k 2
 
-read -r -p "Proceed? (y/N): " ANSWER
-case "${ANSWER:-N}" in
-    [yY])
-        ${CMD} --stats "${SRC}" "${1}"
-        ;;
-    [nN])
-        echo "Aborting per user request."
-        ;;
-    *)
-        echo "Invalid input. Please enter 'y' or 'n'."
-        ;;
-esac
+rclone copy "${SRC}" "${TGT}" \
+    --checksum --links --metadata --no-update-dir-modtime --no-update-modtime \
+    --log-file /dev/null --interactive
