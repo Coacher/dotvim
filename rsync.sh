@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-set -e
+set -eu
 
 SRC="$(dirname "$(readlink -e "${0}")")/.vim/"
-TGT="${1}"
+TGT="${1:?usage: ${0##*/} TGT}"
 
 rclone check "${SRC}" "${TGT}" \
     --one-way --links \
