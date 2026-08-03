@@ -8,7 +8,7 @@ TGT="${1:?usage: ${0##*/} TGT}"
 rclone check "${SRC}" "${TGT}" \
     --one-way --links \
     --log-file /dev/null --combined - \
-    | rg -v '^=' --sort=path
+    | rg -v '^=' | sort -k 2
 
 rclone copy "${SRC}" "${TGT}" \
     --checksum --links --metadata --no-update-modtime \
