@@ -2,9 +2,13 @@
 
 set -eu
 
-ME="$(basename "$(readlink -e "${0}")")"
-SRC="$(dirname "$(readlink -e "${0}")")"
 TGT="${1:?usage: ${0##*/} TGT}"
+
+ME="$(realpath -e "${0}")"
+SRC="${ME%/*}"
+ME="${ME##*/}"
+
+TGT=$(realpath -E "${TGT}")
 
 rclone check "${SRC}" "${TGT}" \
     --exclude "/.git/**" --exclude "/${ME}" \
