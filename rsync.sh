@@ -8,7 +8,7 @@ ME="$(realpath -e "${0}")"
 SRC="${ME%/*}"
 ME="${ME##*/}"
 
-TGT=$(realpath -E "${TGT}")
+TGT=$(realpath "${TGT}")
 
 rclone check "${SRC}" "${TGT}" \
     --exclude "/.git/**" --exclude "/${ME}" \
