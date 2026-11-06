@@ -275,10 +275,10 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
     endif
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/dev.vim')
         " Development
-        Plug 'psf/black', {'branch': 'stable'}
-        Plug 'dense-analysis/ale'
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'Coacher/vim-virtualenv'
+        Plug 'psf/black', {'branch': 'stable'}
+        Plug 'dense-analysis/ale'
         Plug 'puremourning/vimspector'
         Plug 'tweekmonster/helpful.vim'
     endif
