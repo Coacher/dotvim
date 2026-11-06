@@ -279,7 +279,13 @@ if s:CheckAndSource(expand('<script>:h').'/config/plugins/core.vim')
         Plug 'Coacher/vim-virtualenv'
         Plug 'psf/black', {'branch': 'stable', 'on': 'Black'}
         Plug 'dense-analysis/ale'
-        Plug 'puremourning/vimspector'
+        Plug 'puremourning/vimspector', {
+            \ 'on': [
+            \  '<Plug>VimspectorContinue',
+            \  '<Plug>VimspectorToggleBreakpoint',
+            \  '<Plug>VimspectorToggleConditionalBreakpoint',
+            \ ]
+            \}
         Plug 'tweekmonster/helpful.vim'
     endif
     if s:CheckAndSource(expand('<script>:h').'/config/plugins/cmp.vim')
