@@ -7,9 +7,3 @@ let g:vim_ai_open_chat_presets = {
     \ "preset_right":
         \ "rightbelow 80vnew | setlocal noequalalways | setlocal winfixwidth"
 \}
-
-augroup vimrc_vimaicmd
-autocmd!
-autocmd VimEnter * delcommand AIStopChat
-autocmd VimEnter * command! AIChatCancel call vim_ai#AIChatStopRun()
-augroup END
