@@ -34,7 +34,7 @@ imap <silent> <F6> <C-\><C-O>:ALEToggle<CR>
 let g:gutentags_cache_dir = expand('~/.vim/tags')
 
 " vim-virtualenv
-let g:virtualenv#directory = expand('~/Dev/.virtualenvs')
+let g:virtualenv#directory = expand('~/.virtualenvs')
 let g:virtualenv#auto_activate_everywhere = 1
 let g:virtualenv#enable_gutentags_support = 1
 
